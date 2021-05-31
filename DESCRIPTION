@@ -1,8 +1,8 @@
 Package: Rcatch22
 Type: Package
 Title: Calculation of 22 CAnonical Time-Series CHaracteristics
-Version: 0.1.10
-Date: 2021-05-18
+Version: 0.1.12
+Date: 2021-05-29
 Authors@R: c(
   person("Trent", "Henderson", email = "then6675@uni.sydney.edu.au", role = c("cre", "aut")),
   person("Carl", "Lubba", email = "c.lubba15@imperial.ac.uk", role = c("ctb"))
@@ -18,12 +18,12 @@ LazyData: true
 Depends: R (>= 3.5.0)
 Imports: Rcpp (>= 0.12.15)
 LinkingTo: Rcpp
-Suggests: knitr, rmarkdown
+Suggests: knitr, markdown, rmarkdown
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2021-05-18 08:27:30 UTC; trenthenderson
+Packaged: 2021-05-30 01:47:24 UTC; trenthenderson
 Author: Trent Henderson [cre, aut],
   Carl Lubba [ctb]
 Repository: CRAN
-Date/Publication: 2021-05-18 15:00:06 UTC
+Date/Publication: 2021-05-31 07:00:03 UTC
