@@ -210,8 +210,15 @@ hr {
 
 <p>The main function of the package is <code>catch22_all</code> which automates the computation of the 22 features. This can be run in a one-liner:</p>
 
-<pre><code class="r">data &lt;- 1 + 0.5 * 1:1000 + arima.sim(list(ma = 0.5), n = 1000)
+<pre><code class="r">data &lt;- rnorm(100)
 outs &lt;- catch22_all(data)
+</code></pre>
+
+<h3>catch24</h3>
+
+<p>An option to include the mean and standard deviation as features in addition to <code>catch22</code> is available through setting the <code>catch24</code> argument to <code>TRUE</code>:</p>
+
+<pre><code class="r">outs2 &lt;- catch22_all(data, catch24 = TRUE)
 </code></pre>
 
 </body>

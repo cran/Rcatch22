@@ -9,6 +9,9 @@ knitr::opts_chunk$set(
 library(Rcatch22)
 
 ## ---- message = FALSE, warning = FALSE----------------------------------------
-data <- 1 + 0.5 * 1:1000 + arima.sim(list(ma = 0.5), n = 1000)
+data <- rnorm(100)
 outs <- catch22_all(data)
+
+## ---- message = FALSE, warning = FALSE----------------------------------------
+outs2 <- catch22_all(data, catch24 = TRUE)
 
