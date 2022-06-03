@@ -13,5 +13,12 @@ data <- rnorm(100)
 outs <- catch22_all(data)
 
 ## ---- message = FALSE, warning = FALSE----------------------------------------
+outs
+
+## ---- message = FALSE, warning = FALSE----------------------------------------
 outs2 <- catch22_all(data, catch24 = TRUE)
+outs2
+
+## ---- message = FALSE, warning = FALSE----------------------------------------
+Rcatch22::feature_list
 

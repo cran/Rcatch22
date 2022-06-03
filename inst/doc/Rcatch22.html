@@ -204,7 +204,7 @@ hr {
 <pre><code class="r">library(Rcatch22)
 </code></pre>
 
-<p><code>Rcatch22</code> is an R package for the calculation of <a href="https://github.com/chlubba/catch22/">22 CAnonical Time-series CHaracteristics</a> (catch). The package is an efficient implementation that calculates time-series features coded in C.</p>
+<p><code>Rcatch22</code> is an R package for the calculation of <a href="https://github.com/DynamicsAndNeuralSystems/catch22">22 CAnonical Time-series CHaracteristics</a> (catch). The package is an efficient implementation that calculates time-series features coded in C.</p>
 
 <h2>Core calculation function</h2>
 
@@ -214,11 +214,94 @@ hr {
 outs &lt;- catch22_all(data)
 </code></pre>
 
+<p>Taking a look at the returned dataframe, we can see a nice tidy data structure:</p>
+
+<pre><code class="r">outs
+##                                          names       values
+## 1                           DN_HistogramMode_5  0.432653377
+## 2                          DN_HistogramMode_10  0.174395817
+## 3                                    CO_f1ecac  1.865299453
+## 4                               CO_FirstMin_ac  3.000000000
+## 5                     CO_HistogramAMI_even_2_5  0.114538902
+## 6                                CO_trev_1_num -0.262238436
+## 7                         MD_hrv_classic_pnn40  0.939393939
+## 8             SB_BinaryStats_mean_longstretch1  7.000000000
+## 9           SB_TransitionMatrix_3ac_sumdiagcov  0.003748438
+## 10                   PD_PeriodicityWang_th0_01  7.000000000
+## 11        CO_Embed2_Dist_tau_d_expfit_meandiff  0.054462373
+## 12     IN_AutoMutualInfoStats_40_gaussian_fmmi  1.000000000
+## 13              FC_LocalSimple_mean1_tauresrat  0.500000000
+## 14               DN_OutlierInclude_p_001_mdrmd -0.210000000
+## 15               DN_OutlierInclude_n_001_mdrmd -0.140000000
+## 16            SP_Summaries_welch_rect_area_5_1  0.275419269
+## 17            SB_BinaryStats_diff_longstretch0  6.000000000
+## 18                   SB_MotifThree_quantile_hh  2.129759807
+## 19 SC_FluctAnal_2_rsrangefit_50_1_logi_prop_r1  0.400000000
+## 20      SC_FluctAnal_2_dfa_50_1_2_logi_prop_r1  0.828571429
+## 21            SP_Summaries_welch_rect_centroid  1.178097245
+## 22                 FC_LocalSimple_mean3_stderr  1.201213638
+</code></pre>
+
 <h3>catch24</h3>
 
 <p>An option to include the mean and standard deviation as features in addition to <code>catch22</code> is available through setting the <code>catch24</code> argument to <code>TRUE</code>:</p>
 
 <pre><code class="r">outs2 &lt;- catch22_all(data, catch24 = TRUE)
+outs2
+##                                          names       values
+## 1                           DN_HistogramMode_5  0.432653377
+## 2                          DN_HistogramMode_10  0.174395817
+## 3                                    CO_f1ecac  1.865299453
+## 4                               CO_FirstMin_ac  3.000000000
+## 5                     CO_HistogramAMI_even_2_5  0.114538902
+## 6                                CO_trev_1_num -0.262238436
+## 7                         MD_hrv_classic_pnn40  0.939393939
+## 8             SB_BinaryStats_mean_longstretch1  7.000000000
+## 9           SB_TransitionMatrix_3ac_sumdiagcov  0.003748438
+## 10                   PD_PeriodicityWang_th0_01  7.000000000
+## 11        CO_Embed2_Dist_tau_d_expfit_meandiff  0.054462373
+## 12     IN_AutoMutualInfoStats_40_gaussian_fmmi  1.000000000
+## 13              FC_LocalSimple_mean1_tauresrat  0.500000000
+## 14               DN_OutlierInclude_p_001_mdrmd -0.210000000
+## 15               DN_OutlierInclude_n_001_mdrmd -0.140000000
+## 16            SP_Summaries_welch_rect_area_5_1  0.275419269
+## 17            SB_BinaryStats_diff_longstretch0  6.000000000
+## 18                   SB_MotifThree_quantile_hh  2.129759807
+## 19 SC_FluctAnal_2_rsrangefit_50_1_logi_prop_r1  0.400000000
+## 20      SC_FluctAnal_2_dfa_50_1_2_logi_prop_r1  0.828571429
+## 21            SP_Summaries_welch_rect_centroid  1.178097245
+## 22                 FC_LocalSimple_mean3_stderr  1.201213638
+## 23                                     DN_Mean -0.087436646
+## 24                               DN_Spread_Std  1.015255502
+</code></pre>
+
+<h2>Feature list</h2>
+
+<p>A list of the time-series features included in <code>Rcatch22</code> can be viewed using the included <code>feature_list</code> vector:</p>
+
+<pre><code class="r">Rcatch22::feature_list
+##  [1] &quot;DN_HistogramMode_5&quot;                         
+##  [2] &quot;DN_HistogramMode_10&quot;                        
+##  [3] &quot;CO_f1ecac&quot;                                  
+##  [4] &quot;CO_FirstMin_ac&quot;                             
+##  [5] &quot;CO_HistogramAMI_even_2_5&quot;                   
+##  [6] &quot;CO_trev_1_num&quot;                              
+##  [7] &quot;MD_hrv_classic_pnn40&quot;                       
+##  [8] &quot;SB_BinaryStats_mean_longstretch1&quot;           
+##  [9] &quot;SB_TransitionMatrix_3ac_sumdiagcov&quot;         
+## [10] &quot;PD_PeriodicityWang_th0_01&quot;                  
+## [11] &quot;CO_Embed2_Dist_tau_d_expfit_meandiff&quot;       
+## [12] &quot;IN_AutoMutualInfoStats_40_gaussian_fmmi&quot;    
+## [13] &quot;FC_LocalSimple_mean1_tauresrat&quot;             
+## [14] &quot;DN_OutlierInclude_p_001_mdrmd&quot;              
+## [15] &quot;DN_OutlierInclude_n_001_mdrmd&quot;              
+## [16] &quot;SP_Summaries_welch_rect_area_5_1&quot;           
+## [17] &quot;SB_BinaryStats_diff_longstretch0&quot;           
+## [18] &quot;SB_MotifThree_quantile_hh&quot;                  
+## [19] &quot;SC_FluctAnal_2_rsrangefit_50_1_logi_prop_r1&quot;
+## [20] &quot;SC_FluctAnal_2_dfa_50_1_2_logi_prop_r1&quot;     
+## [21] &quot;SP_Summaries_welch_rect_centroid&quot;           
+## [22] &quot;FC_LocalSimple_mean3_stderr&quot;
 </code></pre>
 
 </body>
