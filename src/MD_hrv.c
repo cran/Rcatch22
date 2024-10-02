@@ -23,7 +23,8 @@ double MD_hrv_classic_pnn40(const double y[], const int size){
     const int pNNx = 40;
     
     // compute diff
-    double * Dy = malloc((size-1) * sizeof(double));
+    const int allocsize = (size-1) * sizeof(double);
+    double * Dy = malloc(allocsize);
     diff(y, size, Dy);
     
     double pnn40 = 0;

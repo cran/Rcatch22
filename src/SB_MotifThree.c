@@ -201,7 +201,7 @@ double * sb_motifthree(const double y[], int size, const char how[])
     // from yt
     for (i = 0; i < alphabet_size; i++) {
         if (sizes_r1[i] != 0 && r1[i][sizes_r1[i] - 1] == size - 1) {
-            tmp_ar = malloc((sizes_r1[i] - 1) * sizeof(tmp_ar));
+            tmp_ar = calloc((sizes_r1[i] - 1), sizeof(tmp_ar));
             subset(r1[i], tmp_ar, 0, sizes_r1[i]);
             memcpy(r1[i], tmp_ar, (sizes_r1[i] - 1) * sizeof(tmp_ar));
             sizes_r1[i]--;

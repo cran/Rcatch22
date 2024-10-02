@@ -190,7 +190,7 @@ double CO_f1ecac(const double y[], const int size)
     double thresh = 1.0/exp(1);
 
     double out = (double)size;
-    for(int i = 1; i < size-1; i++){
+    for(int i = 0; i < size-2; i++){
         // printf("i=%d autocorrs_i=%1.3f\n", i, autocorrs[i]);
         if ( autocorrs[i] < thresh ){
             double m = autocorrs[i] - autocorrs[i-1];
@@ -373,7 +373,8 @@ double CO_trev_1_num(const double y[], const int size)
 
     int tau = 1;
 
-    double * diffTemp = malloc((size-1) * sizeof * diffTemp);
+    const int allocsize = (size-1) * sizeof(double);
+    double * diffTemp = malloc(allocsize);
 
     for(int i = 0; i < size-tau; i++)
     {
@@ -407,8 +408,9 @@ double CO_HistogramAMI_even_2_5(const double y[], const int size)
     //const int tau = 2;
     //const int numBins = 5;
 
-    double * y1 = malloc((size-tau) * sizeof(double));
-    double * y2 = malloc((size-tau) * sizeof(double));
+    const int allocsize = (size-tau) * sizeof(double);
+    double * y1 = malloc(allocsize);
+    double * y2 = malloc(allocsize);
 
     for(int i = 0; i < size-tau; i++){
         y1[i] = y[i];

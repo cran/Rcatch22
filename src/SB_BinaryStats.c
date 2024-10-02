@@ -21,7 +21,8 @@ double SB_BinaryStats_diff_longstretch0(const double y[], const int size){
     }
 
     // binarize
-    int * yBin = malloc((size-1) * sizeof(int));
+    const int allocsize = (size-1) * sizeof(double);
+    int * yBin = malloc(allocsize);
     for(int i = 0; i < size-1; i++){
 
         double diffTemp = y[i+1] - y[i];
@@ -63,7 +64,8 @@ double SB_BinaryStats_mean_longstretch1(const double y[], const int size){
     }
 
     // binarize
-    int * yBin = malloc((size-1) * sizeof(int));
+    const int allocsize = (size-1) * sizeof(double);
+    int * yBin = malloc(allocsize);
     double yMean = mean(y, size);
     for(int i = 0; i < size-1; i++){
 
