@@ -33,33 +33,18 @@ using namespace Rcpp;
 NumericVector R_wrapper_double(NumericVector x, double (*f) (const double*, const int), int normalize) {
 
   int n = x.size();
-  double * arrayC = new double[n];
   double out;
 
-  int i;
-  for (i=0; i<n; i++){
-    arrayC[i] = x[i];
-  }
-
   if (normalize){
-
-    double * y_zscored = new double[n];
-
-    zscore_norm2(arrayC, n, y_zscored);
-
-    out = f(y_zscored, n);
-
-    // free(y_zscored);
+    std::vector<double> y_zscored(n);
+    zscore_norm2(x.begin(), n, y_zscored.data());
+    out = f(y_zscored.data(), n);
   }
   else {
-    out = f(arrayC, n);
+    out = f(x.begin(), n);
   }
 
-  // free(arrayC);
-
-  NumericVector outVec = NumericVector::create(out);
-
-  return outVec;
+  return NumericVector::create(out);
 
 };
 
@@ -68,33 +53,18 @@ NumericVector R_wrapper_double(NumericVector x, double (*f) (const double*, cons
 NumericVector R_wrapper_int(NumericVector x, int (*f) (const double*, const int), int normalize) {
 
   int n = x.size();
-  double * arrayC = new double[n];
   int out;
 
-  int i;
-  for (i=0; i<n; i++){
-    arrayC[i] = x[i];
-  }
-
   if (normalize){
-
-    double * y_zscored = new double[n];
-
-    zscore_norm2(arrayC, n, y_zscored);
-
-    out = f(y_zscored, n);
-
-    // free(y_zscored);
+    std::vector<double> y_zscored(n);
+    zscore_norm2(x.begin(), n, y_zscored.data());
+    out = f(y_zscored.data(), n);
   }
   else {
-    out = f(arrayC, n);
+    out = f(x.begin(), n);
   }
 
-  // free(arrayC);
-
-  NumericVector outVec = NumericVector::create(out);
-
-  return outVec;
+  return NumericVector::create(out);
 
 };
 

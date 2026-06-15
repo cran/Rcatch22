@@ -30,20 +30,18 @@ devtools::install_github("hendersontrent/Rcatch22")
 
 You might also be interested in a related R package called
 [`theft`](https://github.com/hendersontrent/theft) (Tools for Handling
-Extraction of Features from Time series) which provides standardised
-access to `Rcatch22` and 5 other feature sets (including 3 feature sets
-from Python libraries) for a total of \~1,200 features. `theft` also
-includes extensive functionality for processing and analysing
-time-series features, including automatic time-series classification,
-top performing feature identification, and a range of statistical data
-visualisations.
+Extraction of Features from Time series) which provides standardized
+access to `Rcatch22` and several other feature sets in both R and Python
+for a total of \>6,600 features (including enabling you to calculate
+your own custom features).
 
 ## Wiki
 
 Please open the included vignette within an R environment or visit the
-detailed [`Rcatch22`
-Wiki](https://github.com/hendersontrent/Rcatch22/wiki/) for information
-and tutorials.
+detailed [`catch22`
+gitbook](https://time-series-features.gitbook.io/catch22) for detailed
+information on all the features and implementations in various
+programming languages.
 
 ## Computational performance
 
@@ -68,21 +66,18 @@ features <- catch22_all(x, catch24 = TRUE)
 A DOI is provided at the top of this README. Alternatively, the package
 can be cited using the following:
 
-
     To cite package 'Rcatch22' in publications use:
 
-      Trent Henderson (2022). Rcatch22: Calculation of 22 CAnonical
-      Time-Series CHaracteristics. R package version 0.2.1.
-      https://CRAN.R-project.org/package=Rcatch22
+      Henderson T (2026). _Rcatch22: Calculation of 22 CAnonical
+      Time-Series CHaracteristics_. R package version 0.2.5.
 
     A BibTeX entry for LaTeX users is
 
       @Manual{,
         title = {Rcatch22: Calculation of 22 CAnonical Time-Series CHaracteristics},
         author = {Trent Henderson},
-        year = {2022},
-        note = {R package version 0.2.1},
-        url = {https://CRAN.R-project.org/package=Rcatch22},
+        year = {2026},
+        note = {R package version 0.2.5},
       }
 
 Please also cite the original *catch22* paper:
